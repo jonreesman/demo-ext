@@ -39,6 +39,21 @@ services:
       - kafka-net
     platform: linux/amd64
 
+  mysql:
+        image: mysql:8.0
+        container_name: mysql
+        environment:
+          MYSQL_USER: springuser
+          MYSQL_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: kafka_example
+        volumes:
+        - mysql:/var/lib/mysql
+
+        ports:
+          - 3307:3306
+        platform: linux/amd64
+
 
 networks:
   kafka-net:
@@ -47,4 +62,6 @@ volumes:
   zookeeper_data:
     driver: local
   kafka_data:
+    driver: local
+  mysql:
     driver: local
