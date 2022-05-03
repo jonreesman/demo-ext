@@ -1,6 +1,6 @@
 # Spring Boot Kafka Example
 
-This Spring Boot application serves as a supplicant to the following [Spring Boot Application](https://github.com/injunTroubles/kafkaDemo). The prior listed kafkaDemo app should be setup and booted prior to following the instructions for this application.
+This Spring Boot application serves as a supplicant to the following [Spring Boot Application](https://github.com/injunTroubles/kafkaDemo). The prior listed kafkaDemo app should be setup and booted prior to following the instructions for this application, but the `docker-compose.yml` of this project (demo-ext) should be used in lieu of the one in kafkaDemo.
 
 This app uses Gradle for build and dependency management.
 
@@ -24,14 +24,11 @@ This app uses Gradle for build and dependency management.
 1. Documentation: https://www.jenv.be/
 2. Installation: https://formulae.brew.sh/formula/jenv
 
-## Kafka
-Once the Zookeeper and Kafka Docker instances are started from the kafkaDemo application and initial topics configured, an additional topic must be added for this supplicant application. Simply run `sh docker/kafka/createTopics.sh` from the parent directory to create the additional topic.
-
 ## Docker
-This code includes two `docker-compose.yml` files. The first is located in the root directory, which is used to start Zookeeper and Kafka. If you have already started Zookeeper and Kafka from the kafkaDemo, there is no need to use this file.
+This code includes a `docker-compose.yml` in the root directory. This file starts the Kafka and Zookeeper instances, configured the same as the kafkaDemo application, and the MySQL instance. 
 
-The second `docker-compose.yml` is in `./mysql`. Composing this file will start up our MySQL instance, pre-configured with our database and user. The default user and password are set in the application.properties, so there is no need for additional configuration. Presently, there is the root user and 'springuser' both of whom use the password 'password'.
-
+## Kafka
+Once the Zookeeper and Kafka Docker instances are started, run `sh docker/kafka/createTopics.sh` from the root project directory to create the topics needed for this project.
 
 ### Build Project
 1. Open terminal and navigate to project directory
