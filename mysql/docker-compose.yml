@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  mysql:
+        image: mysql:8.0
+        container_name: mysql
+        environment:
+          MYSQL_USER: springuser
+          MYSQL_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: kafka_example
+        volumes:
+        - mysql:/var/lib/mysql
+
+        ports:
+          - 3307:3306
+        platform: linux/amd64
+
+volumes:
+  mysql:
+    driver: local
